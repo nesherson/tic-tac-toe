@@ -4,13 +4,35 @@ import './index.css';
 
 class Square extends React.Component {
   render() {
-    return <button className='square'>{/* TODO */}</button>;
+    return (
+      <button className='square' onClick={() => this.props.onClick()}>
+        {this.props.value}
+      </button>
+    );
   }
 }
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
+
+  handleClick = (i) => {
+    const tempSquares = this.state.squares.slice();
+    tempSquares[i] = 'X';
+    this.setState({ squares: tempSquares });
+  };
+
   renderSquare(i) {
-    return <Square />;
+    return (
+      <Square
+        value={this.state.squares[i]}
+        onClick={() => this.handleClick(i)}
+      />
+    );
   }
 
   render() {
