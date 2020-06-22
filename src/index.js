@@ -31,13 +31,6 @@ const Square = (props) => {
 };
 
 class Board extends React.Component {
-  handleReset = () => {
-    this.setState({
-      activePlayer: 'X',
-      squares: Array(9).fill(null),
-    });
-  };
-
   renderSquare = (i) => {
     return (
       <Square
@@ -65,7 +58,6 @@ class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
-        <button onClick={() => this.handleReset()}>Reset</button>
       </div>
     );
   }
@@ -93,18 +85,31 @@ class Game extends React.Component {
 
     if (squares[i] === null) {
       squares[i] = this.state.activePlayer;
-      this.setState({ history: history.concat([{ squares: squares }]) });
+
       this.setState({
+        history: history.concat([{ squares: squares }]),
         activePlayer: this.state.activePlayer === 'X' ? 'O' : 'X',
+        stepNumber: history.length,
       });
-      this.setState({ stepNumber: history.length });
     }
   };
 
   jumpTo = (step) => {
     this.setState({
       stepNumber: step,
-      activePlayer: step % 2 === 0 ? 'O' : 'X',
+      activePlayer: step % 2 === 0 ? 'X' : 'O',
+    });
+  };
+
+  handleReset = () => {
+    this.setState({
+      history: [
+        {
+          squares: Array(9).fill(null),
+        },
+      ],
+      activePlayer: 'X',
+      stepNumber: 0,
     });
   };
 
@@ -122,7 +127,6 @@ class Game extends React.Component {
 
     const moves = history.map((step, move) => {
       const desc = move ? 'Go to move #' + move : 'Go to game start!';
-
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -138,6 +142,7 @@ class Game extends React.Component {
             activePlayer={this.state.activePlayer}
             onClick={(i) => this.handleClick(i)}
           />
+          <button onClick={() => this.handleReset()}>Reset</button>
         </div>
         <div className='game-info'>
           <div>{status}</div>
