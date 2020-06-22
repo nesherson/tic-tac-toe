@@ -126,12 +126,29 @@ class Game extends React.Component {
     }
 
     const moves = history.map((step, move) => {
-      const desc = move ? 'Go to move #' + move : 'Go to game start!';
+      /*  const desc = move ? 'Go to move #' + move : 'Go to game start!';
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
-      );
+      );*/
+
+      const desc = move ? 'Go to move #' + move : 'Go to game start!';
+
+      if (move === 0) {
+        return (
+          <li key={move}>
+            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          </li>
+        );
+      } else {
+        return (
+          <li key={move}>
+            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+            <Board squares={history[move].squares} />
+          </li>
+        );
+      }
     });
 
     return (
@@ -146,7 +163,7 @@ class Game extends React.Component {
         </div>
         <div className='game-info'>
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <ol className='info-board'>{moves}</ol>
         </div>
       </div>
     );
