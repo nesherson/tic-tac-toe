@@ -51,6 +51,14 @@ ul {
   margin-right: 50px;
 }
 
+.info-board {
+  margin: 15px;
+  width: 750px;
+  display: flex;
+
+  flex-wrap: wrap;
+}
+
 .info-board .square {
   background: #fff;
   border: 1px solid #999;
@@ -68,4 +76,8 @@ ul {
 
 .game-info {
   margin-left: 20px;
+}
+
+.game-info li {
+  margin: 15px;
 }

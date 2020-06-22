@@ -144,8 +144,10 @@ class Game extends React.Component {
       } else {
         return (
           <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>{desc}</button>
-            <Board squares={history[move].squares} />
+            <Board
+              squares={history[move].squares}
+              onClick={() => this.jumpTo(move)}
+            />
           </li>
         );
       }
