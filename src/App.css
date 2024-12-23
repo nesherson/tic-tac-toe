@@ -1,6 +1,120 @@
 #root {
-  max-width: 1280px;
+  --col-border-width: 3px;
+  --col-border-color: #ffffff;
+}
+
+.game-container {
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 20px;
+  display: grid;
+  max-width: 580px;
+  min-width: 220px;
+  min-height: 220px;
+  max-height: 580px;
+  grid-template-columns: repeat(3, auto-fit);
+  grid-template-rows: repeat(3, auto-fit);
+}
+
+.col-one,
+.col-two,
+.col-three,
+.col-four,
+.col-five,
+.col-six,
+.col-seven,
+.col-eight,
+.col-nine {
+  padding: 50%;
+  position: relative;
+}
+
+.col-one {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  border-bottom: var(--col-border-width) solid var(--col-border-color);
+  border-right: var(--col-border-width) solid var(--col-border-color);
+}
+
+.col-two {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  border-bottom: var(--col-border-width) solid var(--col-border-color);
+}
+
+.col-three {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  border-bottom: var(--col-border-width) solid var(--col-border-color);
+  border-left: var(--col-border-width) solid var(--col-border-color);
+}
+
+.col-four {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  border-right: var(--col-border-width) solid var(--col-border-color);
+}
+
+.col-five {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.col-six {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  border-left: var(--col-border-width) solid var(--col-border-color);
+}
+
+.col-seven {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  border-top: var(--col-border-width) solid var(--col-border-color);
+  border-right: var(--col-border-width) solid var(--col-border-color);
+}
+
+.col-eight {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  border-top: var(--col-border-width) solid var(--col-border-color);
+}
+
+.col-nine {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  border-top: var(--col-border-width) solid white;
+  border-left: var(--col-border-width) solid white;
+}
+
+.x-wrapper {
+  position: absolute;
+  height: auto;
+  width: 90%;
+  top: 5%;
+  left: 5%;
+}
+
+.circle-wrapper {
+  position: absolute;
+  height: auto;
+  width: 90%;
+  top: 5%;
+  left: 0;
 }
