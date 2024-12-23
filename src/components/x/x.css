@@ -1,0 +1,46 @@
+.x-svg {
+  & #path {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 400;
+
+    animation: x-checker 2.8s linear;
+    animation-fill-mode: forwards;
+  }
+
+  #path2 {
+    stroke-dasharray: 430;
+    stroke-dashoffset: 800;
+
+    animation: x-stroke 0.3s linear;
+    animation-fill-mode: forwards;
+  }
+
+  #path3 {
+    stroke-dasharray: 430;
+    stroke-dashoffset: 800;
+
+    animation: x-stroke 0.3s linear;
+    animation-fill-mode: forwards;
+    animation-delay: 0.3s;
+  } 
+}
+
+@keyframes x-checker {
+    from {
+      stroke-dashoffset: 320;
+    }
+    to {
+      stroke-dashoffset: 400;
+    }
+  }
+  
+  @keyframes x-stroke {
+    from {
+      stroke-dasharray: 430;
+    }
+    to {
+      stroke-dasharray: 400;
+    }
+  }
+
+

@@ -1,0 +1,13 @@
+.circle-svg {
+  & .circle {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: circle-stroke 2s ease-out forwards;
+  }
+}
+
+@keyframes circle-stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
