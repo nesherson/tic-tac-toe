@@ -3,16 +3,20 @@
   --col-border-color: #ffffff;
 }
 
-.game-container {
+main {
   margin: 0 auto;
-  padding: 20px;
+  max-width: 580px;
+  padding: 0 2%;
+}
+
+.game-container {
   display: grid;
   max-width: 580px;
-  min-width: 220px;
-  min-height: 220px;
+  min-width: 280px;
+  min-height: 280px;
   max-height: 580px;
-  grid-template-columns: repeat(3, auto-fit);
-  grid-template-rows: repeat(3, auto-fit);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .col-one,
@@ -26,6 +30,7 @@
 .col-nine {
   padding: 50%;
   position: relative;
+  box-sizing: border-box;
 }
 
 .col-one {
@@ -107,7 +112,7 @@
   position: absolute;
   height: auto;
   width: 90%;
-  top: 5%;
+  bottom: 2%;
   left: 5%;
 }
 
@@ -117,4 +122,53 @@
   width: 90%;
   top: 5%;
   left: 0;
+}
+
+.stats-container {
+  max-width: 580px;
+  min-width: 280px;
+  display: flex;
+  margin-top: 20px;
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 33.33%;
+
+    & span  {
+      text-transform: uppercase;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .stats-container {
+    & div {
+      & span {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .stats-container {
+    & div {
+      & span {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .stats-container {
+    & div {
+      & span {
+        font-size: 0.9rem;
+      }
+    }
+  }
 }

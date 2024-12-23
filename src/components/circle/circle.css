@@ -2,7 +2,7 @@
   & .circle {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: circle-stroke 2s ease-out forwards;
+    animation: circle-stroke 1s ease-out forwards;
   }
 }
 
