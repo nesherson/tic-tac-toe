@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./line.css";
 
 type LineCoordinates = {
@@ -9,12 +8,12 @@ type LineCoordinates = {
 }
 
 interface Props {
-    location: string|null,
+    location: string | null,
     containerElementWidth: number,
     containerElementHeight: number
 }
 
-function calculateCoordinates(location: string|null, containerElementWidth: number, containerElementHeight: number) {
+function calculateCoordinates(location: string | null, containerElementWidth: number, containerElementHeight: number) {
     const offset = 30;
     const coordinates: LineCoordinates = {
         xStart: 0,
@@ -94,10 +93,6 @@ function calculateCoordinates(location: string|null, containerElementWidth: numb
 export default function Line({ location, containerElementWidth, containerElementHeight }: Props) {
     const coordinates = calculateCoordinates(location, containerElementWidth, containerElementHeight);
 
-    // useEffect(() => {
-    //     console.log(containerElementWidth);
-    // }, [containerElementWidth]);
-
     return (
         <svg
             className="line-svg"
@@ -110,7 +105,7 @@ export default function Line({ location, containerElementWidth, containerElement
                 y1={coordinates.yStart}
                 x2={coordinates.xEnd}
                 y2={coordinates.yEnd}
-                strokeWidth={8} />
+                strokeWidth={35} />
         </svg>
     );
 }

@@ -1,28 +1,23 @@
 import "./circle.css";
 
-interface Props {
-  stroke?: string;
-  height?: string;
-  width?: string;
-}
-
-export default function Circle({ stroke, height, width }: Props) {
-  const _stroke = stroke ?? "#000000";
-  const _height = height ?? "100px";
-  const _width = width ?? "100px";
-
+export default function Circle() {
   return (
-    <svg className="circle-svg" height={_height} width={_width}>
-      <circle
-      width={_width}
-      height={_height}
-        className="circle"
-        cx="100"
-        cy="85"
-        r="57"
-        stroke={_stroke}
-        strokeWidth="9"
-        fillOpacity="0"
+    <svg className="circle-svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 50 50"
+      x="0px"
+      y="0px"
+      enableBackground="new 0 0 50 50"
+      xmlSpace="preserve">
+      <path
+        d="M25 9.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+        fill="none"
+        stroke="#FFFFFF"
+        strokeWidth="5"
+        strokeMiterlimit="10"
       />
     </svg>
   );

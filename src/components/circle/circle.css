@@ -1,8 +1,8 @@
 .circle-svg {
-  & .circle {
+  & path {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: circle-stroke 1s ease-out forwards;
+    animation: circle-stroke 5s ease-out forwards;
   }
 }
 

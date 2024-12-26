@@ -1,16 +1,6 @@
 import "./x.css";
 
-interface Props {
-  stroke?: string;
-  height?: string;
-  width?: string;
-}
-
-export default function X({ stroke, height, width }: Props) {
-  const _stroke = stroke ?? "#000000";
-  const _height = height ?? "50px";
-  const _width = width ?? "50px";
-
+export default function X() {
   return (
     <svg
       className="x-svg"
@@ -20,8 +10,8 @@ export default function X({ stroke, height, width }: Props) {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       x="0px"
       y="0px"
-      width={_width}
-      height={_height}
+      width="100%"
+      height="100%"
       viewBox="0 0 50 50"
       enableBackground="new 0 0 50 50"
       xmlSpace="preserve"
@@ -30,19 +20,20 @@ export default function X({ stroke, height, width }: Props) {
         <line
           id="path2"
           fill="none"
-          stroke={_stroke}
-          strokeWidth="3"
+          stroke="#FFFFFF"
+          strokeWidth="5"
           strokeMiterlimit="10"
           x1="8.5"
           y1="41.5"
           x2="41.5"
           y2="8.5"
+          
         />
         <line
           id="path3"
           fill="none"
-          stroke={_stroke}
-          strokeWidth="3"
+          stroke="#FFFFFF"
+          strokeWidth="5"
           strokeMiterlimit="10"
           x1="41.5"
           y1="41.5"
