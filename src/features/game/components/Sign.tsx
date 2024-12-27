@@ -1,7 +1,7 @@
 import Circle from "components/circle/Circle";
 import X from "components/x/X";
 
-export function Sign({ sign }: { sign: string; }) {
+export function Sign({ sign }: { sign: string|null; }) {
   switch (sign) {
     case "X":
       return (

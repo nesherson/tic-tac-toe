@@ -6,8 +6,7 @@ type GameStatistics = {
 
 type Player = {
     type: PlayerType,
-    sign: string,
-    isPlaying: boolean
+    sign: string
 }
 
 type GameOverResult = {

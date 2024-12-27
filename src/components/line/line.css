@@ -1,5 +1,6 @@
 .line-svg {
     position: absolute;
+    pointer-events: none;
 
     .st0 {
         fill: none;
