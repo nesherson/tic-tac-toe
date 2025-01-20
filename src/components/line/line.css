@@ -2,12 +2,15 @@
     position: absolute;
     pointer-events: none;
 
-    .st0 {
+    .bg-line {
         fill: none;
-        stroke: #d9d9d9;
-        stroke-miterlimit: 10;
+        stroke-dasharray: 1030;
+        animation: bg-line-draw 0.5s linear forwards;
+    }
+
+    .line {
+        fill: none;
         stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
         animation: line-draw 0.5s linear forwards;
     }
 }
@@ -15,6 +18,16 @@
 @keyframes line-draw {
     from {
         stroke-dashoffset: 1000;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes bg-line-draw {
+    from {
+        stroke-dashoffset: 1030;
     }
 
     to {

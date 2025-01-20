@@ -27,7 +27,7 @@ export function Stats({
     <div className="stats-container">
       <div
         className={`${
-          currentPlayer.sign === playerOne.sign && !isGameOver ? "bg-current-player" : ""
+          currentPlayer.sign === playerOne.sign && !isGameOver ? "active-player" : ""
         }`}
       >
         <span>{`Player 1(${playerOne.sign})`}</span>
@@ -39,7 +39,7 @@ export function Stats({
       </div>
       <div
         className={`stats-player-two ${
-          currentPlayer.sign === playerTwo.sign && !isGameOver ? "bg-current-player" : ""
+          currentPlayer.sign === playerTwo.sign && !isGameOver ? "active-player" : ""
         }`}
         title="Change game mode"
         onClick={handleGameModeChange}

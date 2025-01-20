@@ -8,7 +8,6 @@ export default function Circle() {
       viewBox="0 0 50 50"
       x="0px"
       y="0px"
-      enableBackground="new 0 0 50 50"
       xmlSpace="preserve">
       <path
         d="M25 9.0845
@@ -16,8 +15,7 @@ export default function Circle() {
           a 15.9155 15.9155 0 0 1 0 -31.831"
         fill="none"
         stroke="#FFFFFF"
-        strokeWidth="5"
-        strokeMiterlimit="10"
+        strokeWidth="8"
       />
     </svg>
   );
