@@ -1,3 +1,4 @@
+import { Measures } from "@react-hookz/web";
 import "./line.css";
 
 type LineCoordinates = {
@@ -14,15 +15,14 @@ type LineCoordinates = {
 
 interface Props {
     location: string | null,
-    containerElementWidth: number,
-    containerElementHeight: number
+    gameContainerMeasures: Measures
 }
 
 function calculateCoordinates(location: string | null,
     containerElementWidth: number,
     containerElementHeight: number,
     strokeWidth: number) {
-    const offset = 30;
+    let offset = 0;
     const coordinates: LineCoordinates = {
         xStart: 0,
         yStart: 0,
@@ -39,6 +39,7 @@ function calculateCoordinates(location: string | null,
 
     switch (location) {
         case "first-col": {
+            offset = containerElementHeight * 0.03;
             const width = (containerElementWidth / 3) * 0.5;
             coordinates.xStart = width;
             coordinates.yStart = offset;
@@ -51,6 +52,7 @@ function calculateCoordinates(location: string | null,
             break;
         }
         case "second-col": {
+            offset = containerElementHeight * 0.03;
             const width = (containerElementWidth / 3) * 0.5;
             coordinates.xStart = width * 3;
             coordinates.yStart = offset;
@@ -63,6 +65,7 @@ function calculateCoordinates(location: string | null,
             break;
         }
         case "third-col": {
+            offset = containerElementHeight * 0.03;
             const width = (containerElementWidth / 3) * 0.5;
             coordinates.xStart = width * 5;
             coordinates.yStart = offset;
@@ -75,6 +78,7 @@ function calculateCoordinates(location: string | null,
             break;
         }
         case "first-row": {
+            offset = containerElementWidth * 0.03;
             const height = (containerElementHeight / 3) * 0.5;
             coordinates.xStart = offset;
             coordinates.yStart = height;
@@ -87,6 +91,7 @@ function calculateCoordinates(location: string | null,
             break;
         }
         case "second-row": {
+            offset = containerElementWidth * 0.03;
             const height = (containerElementHeight / 3) * 0.5;
             coordinates.xStart = offset;
             coordinates.yStart = height * 3;
@@ -99,6 +104,7 @@ function calculateCoordinates(location: string | null,
             break;
         }
         case "third-row": {
+            offset = containerElementWidth * 0.03;
             const height = (containerElementHeight / 3) * 0.5;
             coordinates.xStart = offset;
             coordinates.yStart = height * 5;
@@ -111,6 +117,7 @@ function calculateCoordinates(location: string | null,
             break;
         }
         case "left-to-right-diagonal": {
+            offset = containerElementHeight + containerElementWidth / 2 * 0.03;
             coordinates.xStart = offset;
             coordinates.yStart = offset;
             coordinates.xEnd = containerElementWidth - offset;
@@ -122,6 +129,7 @@ function calculateCoordinates(location: string | null,
             break;
         }
         case "right-to-left-diagonal": {
+            offset = containerElementHeight + containerElementWidth / 2 * 0.03;
             coordinates.xStart = containerElementWidth - offset;
             coordinates.yStart = offset;
             coordinates.xEnd = offset;
@@ -137,18 +145,18 @@ function calculateCoordinates(location: string | null,
     return coordinates;
 }
 
-export default function Line({ location, containerElementWidth, containerElementHeight }: Props) {
+export default function Line({ location, gameContainerMeasures }: Props) {
     const strokeWidth = 20;
     const coordinates = calculateCoordinates(location,
-        containerElementWidth,
-        containerElementHeight,
+        gameContainerMeasures.width,
+        gameContainerMeasures.height,
         strokeWidth);
 
     return (
         <svg
             className="line-svg"
-            height={containerElementWidth}
-            width={containerElementHeight}
+            height={gameContainerMeasures.height}
+            width={gameContainerMeasures.width}
             xmlns="http://www.w3.org/2000/svg">
             <line
                 className="bg-line"

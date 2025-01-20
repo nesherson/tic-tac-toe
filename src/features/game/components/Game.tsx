@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useMeasure } from "@react-hookz/web";
 
 import { Stats } from "./Stats";
 import { Sign } from "./Sign";
@@ -123,9 +124,7 @@ const GAME_STATISTICS_INITIAL_STATE: GameStatistics = {
   ties: 0,
 };
 
-export default function Game() {
-  const gameContainerRef = useRef<HTMLDivElement>(null);
-  
+export default function Game() {  
   const [grid, setGrid] = useState(createGrid(3, 3));
   const [playerOne, setPlayerOne] = useState<Player>(PLAYER_ONE_INITIAL_STATE);
   const [playerTwo, setPlayerTwo] = useState<Player>(PLAYER_TWO_INITIAL_STATE);
@@ -138,6 +137,10 @@ export default function Game() {
   );
   const [isGameOver, setIsGameOver] = useState(false);
   const [winLocation, setWinLocation] = useState<string | null>(null);
+
+  // const gameContainerRef = useRef<HTMLDivElement>(null);
+  let isComputerPlaying = currentPlayer.type === PlayerType.ComputerPlayer;
+  const [gameContainerMeasures, gameContainerRef] = useMeasure<HTMLDivElement>();
 
   const handleCellOnClick = (row: number, column: number) => {
     playMove(row, column);
@@ -205,9 +208,13 @@ export default function Game() {
       return;
     }
 
-    const tempGrid = [...grid];
+    if (!currentPlayer) 
+      return;
 
-    if (!currentPlayer) return;
+    if (isComputerPlaying)
+      return;
+    
+    const tempGrid = [...grid];
 
     if (tempGrid[row][column] !== null) return;
 
@@ -235,6 +242,8 @@ export default function Game() {
 
       if (isGameOver) return;
 
+      isComputerPlaying = true;
+
       const tempGrid = [...grid];
       let randomRow = getRandomNumber(3);
       let randomColumn = getRandomNumber(3);
@@ -259,6 +268,7 @@ export default function Game() {
         return;
       }
 
+      isComputerPlaying = false;
       setGrid(tempGrid);
       goToNextPlayer();
     }, 400);
@@ -279,7 +289,6 @@ export default function Game() {
 
     restartGame();
   };
-
   useEffect(() => {
     if (currentPlayer?.type === PlayerType.ComputerPlayer) {
       let timeoutId = playComputerMove();
@@ -301,11 +310,10 @@ export default function Game() {
       />
       {grid && (
         <div className="grid-container" ref={gameContainerRef}>
-          {isGameOver && gameContainerRef.current && (
+          {isGameOver && gameContainerMeasures && (
             <Line
               location={winLocation}
-              containerElementWidth={gameContainerRef.current.clientWidth}
-              containerElementHeight={gameContainerRef.current.clientHeight}
+              gameContainerMeasures={gameContainerMeasures}
             />
           )}
           {grid.map((row, rowIndex) => {
